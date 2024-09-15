@@ -1,0 +1,13 @@
+services:
+  integration-agent:
+    image: ${APIM_REGISTRY:-graviteeio}/federation-agent-aws-api-gateway:${AGENT_VERSION:-latest}
+    restart: always
+    environment:
+      - gravitee_integration_connector_ws_endpoints_0=${WS_ENDPOINTS}
+      - gravitee_integration_connector_ws_headers_0_name=Authorization
+      - gravitee_integration_connector_ws_headers_0_value=bearer ${WS_AUTH_TOKEN}
+      - gravitee_integration_providers_0_configuration_accessKeyId=${AWS_ACCESS_KEY_ID}
+      - gravitee_integration_providers_0_configuration_region=${AWS_REGION}
+      - gravitee_integration_providers_0_configuration_secretAccessKey=${AWS_SECRET_ACCESS_KEY}
+      - gravitee_integration_providers_0_integrationId=${INTEGRATION_ID}
+      - gravitee_integration_providers_0_type=aws-api-gateway

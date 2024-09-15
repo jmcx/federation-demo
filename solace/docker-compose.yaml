@@ -1,0 +1,13 @@
+services:
+  integration-agent:
+    image: ${APIM_REGISTRY:-graviteeio}/federation-agent-solace:${AGENT_VERSION:-latest}
+    restart: always
+    environment:
+      - gravitee_integration_connector_ws_endpoints_0=${WS_ENDPOINTS}
+      - gravitee_integration_connector_ws_headers_0_name=Authorization
+      - gravitee_integration_connector_ws_headers_0_value=bearer ${WS_AUTH_TOKEN}
+      - gravitee_integration_providers_0_configuration_authToken=${SOLACE_AUTH_TOKEN}
+      - gravitee_integration_providers_0_integrationId=${INTEGRATION_ID}
+      - gravitee_integration_providers_0_type=solace
+      - gravitee_integration_providers_0_configuration_url=${SOLACE_ENDPOINT:-https://api.solace.cloud/api/v2/architecture}
+      - gravitee_integration_providers_0_configuration_0_appDomains=${SOLACE_APPLICATION_0_DOMAIN:-}

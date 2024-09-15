@@ -1,0 +1,18 @@
+services:
+  integration-agent:
+    image: ${APIM_REGISTRY:-graviteeio}/federation-agent-apigee:${AGENT_VERSION:-latest}
+    restart: always
+    volumes:
+      - ${SERVICE_ACCOUNT_KEY_PATH:-/dev/null}:/opt/graviteeio-integration-agent/config/key/key.json
+    environment:
+      - gravitee_integration_connector_ws_endpoints_0=${WS_ENDPOINTS}
+      - gravitee_integration_connector_ws_headers_0_name=Authorization
+      - gravitee_integration_connector_ws_headers_0_value=bearer ${WS_AUTH_TOKEN}
+      - gravitee_integration_providers_0_integrationId=${INTEGRATION_ID}
+      - gravitee_integration_providers_0_configuration_gcpProjectId=${GCP_PROJECT_ID}
+      - gravitee_integration_providers_0_configuration_developerEmail=${APIGEE_DEV_EMAIL}
+      - gravitee_integration_providers_0_configuration_developerFirstName=${APIGEE_DEV_FIRST_NAME}
+      - gravitee_integration_providers_0_configuration_developerLastName=${APIGEE_DEV_LAST_NAME}
+      - gravitee_integration_providers_0_configuration_developerUsername=${APIGEE_DEV_USERNAME}
+      - gravitee_integration_providers_0_configuration_serviceAccountKeyInline=${SERVICE_ACCOUNT_KEY_INLINE}
+      - gravitee_integration_providers_0_type=apigee
