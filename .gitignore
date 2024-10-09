@@ -5,3 +5,5 @@ solace/.env
 apigee/innate-conquest-433010-f3-a3638620c28c.json
 apigee/.env
 aws/.env
+ibm/.env
+confluent-platform/.env

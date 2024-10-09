@@ -1,0 +1,16 @@
+services:
+    integration-agent:
+        image: ${APIM_REGISTRY:-graviteeio}/federation-agent-confluent-platform:${AGENT_VERSION:-latest}
+        restart: always
+        environment:
+            - gravitee_integration_connector_ws_endpoints_0=${WS_ENDPOINTS}
+            - gravitee_integration_connector_ws_headers_0_name=Authorization
+            - gravitee_integration_connector_ws_headers_0_value=Bearer ${WS_AUTH_TOKEN}
+            - gravitee_integration_providers_0_integrationId=${INTEGRATION_ID}
+            - gravitee_integration_providers_0_type=confluent-platform
+            - gravitee_integration_providers_0_configuration_cluster_api_endpoint=${CLUSTER_API_ENDPOINT}
+            - gravitee_integration_providers_0_configuration_schema_registry_endpoint=${SCHEMA_REGISTRY_ENDPOINT}
+            - gravitee_integration_providers_0_configuration_auth_password=${BASIC_AUTH_LOGIN:-}
+            - gravitee_integration_providers_0_configuration_auth_username=${BASIC_AUTH_PASSWORD:-}
+            - gravitee_integration_providers_0_configuration_topic_prefix=${PREFIX:-}
+            - gravitee_integration_providers_0_configuration_trust_all=${TRUST_ALL:-}

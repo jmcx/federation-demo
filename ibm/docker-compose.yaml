@@ -1,0 +1,15 @@
+services:
+  integration-agent:
+    image: ${APIM_REGISTRY:-graviteeio}/federation-agent-ibm-api-connect:${AGENT_VERSION:-latest}
+    restart: always
+    environment:
+      - gravitee_integration_connector_ws_endpoints_0=${WS_ENDPOINTS}
+      - gravitee_integration_connector_ws_headers_0_name=Authorization
+      - gravitee_integration_connector_ws_headers_0_value=bearer ${WS_AUTH_TOKEN}
+      - gravitee_integration_providers_0_integrationId=${INTEGRATION_ID}
+      - gravitee_integration_providers_0_configuration_platformApiUrl=${PLATFORM_API_URL}
+      - gravitee_integration_providers_0_configuration_clientId=${CLIENT_ID}
+      - gravitee_integration_providers_0_configuration_clientSecret=${CLIENT_SECRET}
+      - gravitee_integration_providers_0_configuration_organizationName=${ORGANIZATION_NAME}
+      - gravitee_integration_providers_0_configuration_apiKey=${API_KEY}
+      - gravitee_integration_providers_0_type=ibm-api-connect
