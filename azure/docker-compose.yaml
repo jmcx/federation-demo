@@ -3,20 +3,19 @@ services:
     image: ${APIM_REGISTRY:-graviteeio}/federation-agent-azure-api-management:${AGENT_VERSION:-latest}
     restart: always
     environment:
+      # Gravitee-specific configuration
       - gravitee_integration_connector_ws_endpoints_0=${WS_ENDPOINTS}
       - gravitee_integration_connector_ws_headers_0_name=Authorization
       - gravitee_integration_connector_ws_headers_0_value=Bearer ${WS_AUTH_TOKEN}
       - gravitee_integration_providers_0_integrationId=${INTEGRATION_ID}
       - gravitee_integration_providers_0_type=azure-api-management
-      # authentication
+      # Azure APIM authentication
       - gravitee_integration_providers_0_configuration_auth_appId=${APP_ID}
       - gravitee_integration_providers_0_configuration_auth_appSecret=${APP_SECRET}
       - gravitee_integration_providers_0_configuration_auth_tenant=${TENANT_ID}
-      # others configs
       - gravitee_integration_providers_0_configuration_subscription=${SUBSCRIPTION}
       - gravitee_integration_providers_0_configuration_resourceGroup=${RESOURCE_GROUP}
       - gravitee_integration_providers_0_configuration_service=${SERVICE}
-      # subscription
       - gravitee_integration_providers_0_configuration_dev_email=${AZURE_DEV_EMAIL}
       - gravitee_integration_providers_0_configuration_dev_firstName=${AZURE_DEV_FIRST_NAME}
       - gravitee_integration_providers_0_configuration_dev_lastName=${AZURE_DEV_LAST_NAME}

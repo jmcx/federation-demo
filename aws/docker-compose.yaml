@@ -11,3 +11,5 @@ services:
       - gravitee_integration_providers_0_configuration_secretAccessKey=${AWS_SECRET_ACCESS_KEY}
       - gravitee_integration_providers_0_integrationId=${INTEGRATION_ID}
       - gravitee_integration_providers_0_type=aws-api-gateway
+      - gravitee_integration_providers_0_configuration_0_stage=${AWS_0_STAGE:-}
+      - gravitee_integration_providers_0_configuration_1_stage=${AWS_1_STAGE:-}
