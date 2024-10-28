@@ -12,4 +12,5 @@ services:
       - gravitee_integration_providers_0_configuration_clientSecret=${CLIENT_SECRET}
       - gravitee_integration_providers_0_configuration_organizationName=${ORGANIZATION_NAME}
       - gravitee_integration_providers_0_configuration_apiKey=${API_KEY}
+      - gravitee_integration_providers_0_configuration_mergeFromCatalog=${MERGE_FROM_CATALOG}
       - gravitee_integration_providers_0_type=ibm-api-connect

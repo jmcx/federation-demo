@@ -7,3 +7,4 @@ apigee/.env
 aws/.env
 ibm/.env
 confluent-platform/.env
+confluent-platform/.notes.md
