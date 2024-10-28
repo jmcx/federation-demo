@@ -1,1 +1,1 @@
-# federation-beverage-demo
+# Federation Demo project
